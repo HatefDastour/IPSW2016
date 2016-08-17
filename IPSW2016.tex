@@ -1,0 +1,68 @@
+\documentclass[newPxFont,sthlmFooter]{beamer}
+
+\include{Setup}
+\include{Title}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Motivation}
+\begin{itemize}
+\item There are two groups of Borrowers: Group 1 (Financial firms) and Group 2 (Oil and Gas); each group has a large number of firms (around 2000 and 9000). \justifying
+\item Each borrower is ranked based on expert opinions. A rank is a number between 1 and 16 (default banks have rank 17). The bank has monthly data on ranks over a period of 10 years for each borrower. \justifying
+\item If two borrowers belong to the same group, it is straightforward to compare the riskiness of these (by comparing the average scores for instance).
+\end{itemize} 
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Problem: If there are two borrowers coming from different groups, how can the bank know which borrower is riskier? \justifying
+\item We then need to find a global ranking scale to compare the riskiness amongst borrowers from either groups.
+\item Data: Group $A_i$ has $N_i$ firms, $i=1, 2.$ The ranks of borrower $a$ at time $t$ is $R^a_t, t=0,\dots T, R^a_t\in\{1,\dots 17\}.$
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{First Approach}
+\begin{itemize}
+\item For borrower $a\in A_1,$ we define a local rank $\overline{R_t^a}$ by
+$$\overline{R_t^a}=\sum_{t=1}^Tw_iR_t^a.$$
+\item Supose that $(\overline{R_t^a})_{a\in A_1}$ are realizations of the same random variable $R^1$ whose distribution  function is $F_1.$
+\item When $a$ varies in $A_1$, we can plot a histogram for $F_1.$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item We then approximate the discrete empirical distribution $F_1$ by a smooth well-known distribution function $\hat{F_1}$ depending on the data.
+\item We define the conditional probability of default 
+ 
+$$PD^1(x):=PD(R^1=D|R^1=x)=\frac{1-\hat{F_1}(D)}{1-\hat{F_1}(x)}.$$
+\item For two arbitrary borrowers $a, b$: we compare $PD^1(\overline{R_t^a})$ and $PD^2(\overline{R_t^b})$. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Second Approach}
+\begin{itemize}
+\item In each group, we suppose that borrowers are realizations of the same markov process ($R^1$ for group 1 and $R^2$ for group 2).
+\item From the data, we get estimates for the  transition matrices $A_1$ and $A_2.$
+\item Suppose that a borrower $a\in A_1$ has current rank $R^a_t=x,$ we can calculate the probability of default in a time horizon $\tau$ by
+$$PD^1(x):=PD(R^1_s=D, s=t,\dots t+\tau|R_t=x).$$
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{itemize}
+\item Given two borrowers $a\in A_1, b\in A_2$ with current ranks $x, y$. We compare $PD^1(x)$ and $PD^2(y).$
+\end{itemize}
+\end{frame}
+%\begin{frame}{Comparison}
+%
+%\end{frame}
+%
+%\begin{frame}{Conclusion}
+%
+%\end{frame}
+
+
+\end{document} 
