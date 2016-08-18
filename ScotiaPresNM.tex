@@ -1,0 +1,64 @@
+\documentclass{beamer}
+
+
+\begin{document}
+
+\frame{
+\underline{Markov Chain approach}
+
+For each company $a$, we model the random process $R^a_t$ ($t=1,\ldots,T$) as a 
+Markov chain on the state space $\{1,2,\ldots,16,D\}$.  Assume that there is one transition 
+probability matrix for the Oil \& Gas companies, and another for the Financial Services companies.
+
+\medskip
+
+For states $i$ and $j$, we estimate the transition probability $P(i,j)$ by 
+\[    \frac{\hbox{number of observed transitions from $i$ to $j$}}{\hbox{number of 
+       observations in state $i$}}
+\]
+(within each sector).
+
+\medskip
+
+\textbf{Remarks}:
+\\  (1)  We see some transitions $D\rightarrow i$ (e.g.\ companies emerging from
+bankruptcy protection), but we ignore these and treat $D$ as an absorbing state (i.e., $P(D,D)=1$).
+\\
+(2)  There are no 16's in the Financial sector.  There are a few 16's in Oil \& Gas, but we 
+never see them change.  So we ignore state 16.
+}
+
+\frame{
+Given a transition probability matrix $P$, there are different ways to assess default probabilities of 
+states for comparison purposes.
+
+\medskip
+$\bullet$  \underline{Single month}:  Look at $P(i,D)$ for each $i$.  These numbers are small 
+(sometimes 0), with substantial statistical uncertainty (via the Clopper-Pearson confidence intervals
+for binomial distributions).
+
+\smallskip
+$\bullet$ \underline{One year}:  Compute $P^{12}$, the 12-month transition matrix, and look at 
+$P^{(12)}(i,D)$ for each $i$.
+
+\smallskip
+$\bullet$ \underline{``Half-life''}:  Starting in state $i$, let $H(i)$ be the number of periods needed for 
+the probability of default to exceed 0.5:
+\[    H(i) \,:=\, \min\{t:  P^{(t)}(i,D) \,\geq \,0.5\}.   \]
+ 
+}
+
+\end{document}
+
+
+\frame
+{
+  \frametitle{Features of the Beamer Class}
+
+  \begin{itemize}
+  \item<1-> Normal LaTeX class.
+  \item<2-> Easy overlays.
+  \item<3-> No external programs needed.      
+  \end{itemize}
+}
+
